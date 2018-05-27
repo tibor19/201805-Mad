@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeeklyMenuComponent implements OnInit {
 
-  recipes = [{
+  recipes: IRecipe[] = [{
     'recipeId': 1,
     'name': 'Fish sticks and Rice',
     'price': 2.0,
@@ -86,5 +86,4 @@ export class WeeklyMenuComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
