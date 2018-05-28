@@ -1,5 +1,5 @@
 <article>
-  <div>
+  <div *ngIf="recipe">
     <h2>{{recipe.name}}</h2>
 
     <div class="box">
@@ -19,8 +19,8 @@
         <img class="recipe-image" [src]="recipe.image | image" [attr.alt]="recipe.image"/>
       </div>
     </div>
-    <app-ingredients [ingredients]="recipe.recipeIngredients"></app-ingredients>
-    <app-instructions [instructions]="recipe.recipeInstructions"></app-instructions>
+    <app-ingredients *ngIf="recipe.recipeIngredients?.length" [ingredients]="recipe.recipeIngredients"></app-ingredients>
+    <app-instructions *ngIf="recipe.recipeInstructions?.length" [instructions]="recipe.recipeInstructions"></app-instructions>
   </div>
 
 </article>
