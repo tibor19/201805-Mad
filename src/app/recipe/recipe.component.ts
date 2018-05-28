@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeMockService } from '../recipe-mock.service';
+import { RecipeHttpService } from '../recipe-http.service';
 
 @Component({
   selector: 'app-recipe',
@@ -9,10 +10,11 @@ import { RecipeMockService } from '../recipe-mock.service';
 export class RecipeComponent implements OnInit {
 
   recipe: IRecipe = null;
-  constructor(private recipeService: RecipeMockService) { }
+  constructor(private recipeService: RecipeHttpService) { }
 
   ngOnInit() {
-    this.recipe = this.recipeService.getRecipe(0);
+    this.recipeService.getRecipe(0)
+        .subscribe(r => this.recipe = r);
   }
 
 }
