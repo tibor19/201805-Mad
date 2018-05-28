@@ -43,7 +43,7 @@ const appRoutes: Routes = [
     ImagePipe
   ],
   imports: [
-    BrowserModule, HttpClientModule, RouterModule.forRoot(appRoutes, {enableTracing: true})
+    BrowserModule, HttpClientModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

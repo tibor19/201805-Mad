@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeMockService } from '../recipe-mock.service';
 import { RecipeHttpService } from '../recipe-http.service';
-import { ActivatedRoute } from '@angular/router';
-import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe',
@@ -15,9 +15,12 @@ export class RecipeComponent implements OnInit {
   constructor(private route: ActivatedRoute, private recipeService: RecipeHttpService) { }
 
   ngOnInit() {
-    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    this.recipeService.getRecipe(id)
-        .subscribe(r => this.recipe = r);
+    //const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+
+    this.route.paramMap.pipe(
+      switchMap(
+        (params: ParamMap) => this.recipeService.getRecipe(parseInt(params.get('id'), 10))
+      )).subscribe(r => this.recipe = r);
   }
 
 }
