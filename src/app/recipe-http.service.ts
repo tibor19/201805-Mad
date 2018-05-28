@@ -10,6 +10,7 @@ export class RecipeHttpService {
   constructor(private http: HttpClient) { }
 
   getRecipe(id: number): Observable<IRecipe> {
+    console.log(`Getting recipe with id ${id}!`);
     return this.http.get<IRecipe>('content/data/recipe.json');
   }
 
