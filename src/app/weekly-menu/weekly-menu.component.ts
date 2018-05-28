@@ -85,5 +85,10 @@ export class WeeklyMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const recipes = this.recipes.map((r, index) => {
+      r.weekDay = this.weekDays[index % 7];
+      return r;
+    });
+    this.recipes = recipes;
   }
 }
